@@ -77,6 +77,7 @@ export default function ChallengePanel({
   }
 
   const submitted = result !== null;
+  const canProgress = submitted || alreadyDone;
   const parsedText = parseQuestionText(question.questionText);
 
   return (
@@ -195,21 +196,8 @@ export default function ChallengePanel({
           </AnimatePresence>
 
           <div className="mt-auto flex gap-3">
-            {!submitted ? (
-              <Button
-                onClick={handleSubmit}
-                disabled={selected === null || isPending || alreadyDone}
-                className="flex-1 bg-gold text-gold-foreground hover:bg-gold/90 font-black text-sm rounded-full"
-                data-ocid="challenge.submit_button"
-              >
-                {alreadyDone
-                  ? "Already Completed ✓"
-                  : isPending
-                    ? "Checking…"
-                    : "Submit Answer"}
-              </Button>
-            ) : (
-              hasNext && (
+            {canProgress ? (
+              hasNext ? (
                 <Button
                   onClick={onNext}
                   className="flex-1 bg-white text-foreground hover:bg-white/90 font-black text-sm rounded-full"
@@ -217,7 +205,20 @@ export default function ChallengePanel({
                 >
                   Next Level →
                 </Button>
+              ) : (
+                <div className="flex-1 text-center text-white/70 font-bold text-sm py-2">
+                  🎉 Completed!
+                </div>
               )
+            ) : (
+              <Button
+                onClick={handleSubmit}
+                disabled={selected === null || isPending}
+                className="flex-1 bg-gold text-gold-foreground hover:bg-gold/90 font-black text-sm rounded-full"
+                data-ocid="challenge.submit_button"
+              >
+                {isPending ? "Checking…" : "Submit Answer"}
+              </Button>
             )}
           </div>
         </div>
