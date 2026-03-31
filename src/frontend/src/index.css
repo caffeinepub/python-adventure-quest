@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* Deep blue nav: #0E4F78 */
+    --nav-start: 0.37 0.095 234;
+    --nav-end: 0.29 0.085 234;
+
+    /* Card blues: #2E84B8 / #1F6FA3 */
+    --card-blue-start: 0.54 0.12 234;
+    --card-blue-end: 0.45 0.12 234;
+
+    /* Background page: off-white/sky */
+    --background: 0.95 0.015 234;
+    --foreground: 0.17 0.01 234;
+
+    --card: 1 0 0;
+    --card-foreground: 0.17 0.01 234;
+    --popover: 1 0 0;
+    --popover-foreground: 0.17 0.01 234;
+
+    /* Primary = deep blue */
+    --primary: 0.37 0.095 234;
+    --primary-foreground: 1 0 0;
+
+    --secondary: 0.93 0.01 234;
+    --secondary-foreground: 0.37 0.095 234;
+
+    --muted: 0.93 0.01 234;
+    --muted-foreground: 0.5 0.02 234;
+
+    --accent: 0.83 0.155 80;
+    --accent-foreground: 0.2 0.04 80;
+
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 1 0 0;
+
+    --border: 0.88 0.02 234;
+    --input: 0.9 0.015 234;
+    --ring: 0.45 0.12 234;
+
+    /* Gold accent: #F6C343 */
+    --gold: 0.83 0.155 80;
+    --gold-foreground: 0.2 0.04 80;
+
+    /* Success green */
+    --success: 0.55 0.17 145;
+    --success-foreground: 1 0 0;
+
+    --chart-1: 0.646 0.222 41.116;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+    --sidebar: 0.985 0 0;
+    --sidebar-foreground: 0.145 0 0;
+    --sidebar-primary: 0.205 0 0;
+    --sidebar-primary-foreground: 0.985 0 0;
+    --sidebar-accent: 0.97 0 0;
+    --sidebar-accent-foreground: 0.205 0 0;
+    --sidebar-border: 0.922 0 0;
+    --sidebar-ring: 0.708 0 0;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-nunito;
+  }
+}
+
+@layer utilities {
+  .bg-nav-gradient {
+    background: linear-gradient(
+      135deg,
+      oklch(var(--nav-start)),
+      oklch(var(--nav-end))
+    );
+  }
+  .bg-card-blue {
+    background: linear-gradient(
+      160deg,
+      oklch(var(--card-blue-start)),
+      oklch(var(--card-blue-end))
+    );
+  }
+  .text-gold {
+    color: oklch(var(--gold));
+  }
+  .bg-gold {
+    background: oklch(var(--gold));
+  }
+  .bg-success {
+    background: oklch(var(--success));
+  }
+  .code-bg {
+    background: oklch(0.18 0.02 260);
+  }
+}
